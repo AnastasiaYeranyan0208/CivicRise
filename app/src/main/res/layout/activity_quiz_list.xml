@@ -1,0 +1,55 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_photo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp"
+        android:layout_marginTop="150dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quizzes"
+            android:textSize="40sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/dosis_bold"
+            android:layout_marginBottom="40dp" />
+
+        <Button
+            android:id="@+id/btnQuiz1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Quiz 1"
+            android:textSize="22sp"
+            android:fontFamily="@font/roboto_bold"
+            android:backgroundTint="#4D0B7A"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnQuiz2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Quiz 2"
+            android:textSize="22sp"
+            android:fontFamily="@font/roboto_bold"
+            android:backgroundTint="#4D0B7A"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnQuiz3"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Quiz 3"
+            android:textSize="22sp"
+            android:fontFamily="@font/roboto_bold"
+            android:backgroundTint="#4D0B7A"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</ScrollView>

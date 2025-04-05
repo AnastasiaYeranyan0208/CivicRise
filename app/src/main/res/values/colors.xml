@@ -2,6 +2,7 @@
 <resources>
     <color name="bright_violet">#8A2BE2</color>
     <color name="deep_purple">#300547</color>
+    <color name="dark_purple">#4D0B7A</color>
     <color name="accent_blue">#1E90FF</color>
     <color name="light_blue">#ADD8E6</color>
     <color name="turquoise">#40E0D0</color>

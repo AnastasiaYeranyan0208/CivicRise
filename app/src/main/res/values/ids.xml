@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="titleQuizCategories" type="id" />
+    <item name="btnMedia" type="id" />
+    <item name="btnRights" type="id" />
+    <item name="btnPolitics" type="id" />
+</resources>

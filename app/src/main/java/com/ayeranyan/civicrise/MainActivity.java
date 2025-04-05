@@ -2,25 +2,26 @@ package com.ayeranyan.civicrise;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnQuizzes, btnArticles;
+    private Button btnLogin, btnRegister, btnTestMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnQuizzes = findViewById(R.id.btnQuizzes);
-        btnArticles = findViewById(R.id.btnArticles);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
+        btnTestMode = findViewById(R.id.btnTestMode);
 
-        btnQuizzes.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, QuizListActivity.class)));
+        btnLogin.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,LoginActivity.class)));
 
-        btnArticles.setOnClickListener(v -> {
+        btnRegister.setOnClickListener (v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
+        btnTestMode.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,MainMenuActivity.class)));
 
-        });
     }
 }

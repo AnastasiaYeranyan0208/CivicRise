@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/categories_background"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/titleQuizCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quiz Categories"
+        android:textSize="40sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/dosis_bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
+    <Button
+        android:id="@+id/btnMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Media &amp; Misinformation"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_regular"
+        android:backgroundTint="#4D0B7A"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="170dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="140dp" />
+
+    <Button
+        android:id="@+id/btnRights"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Civil Rights"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_regular"
+        android:backgroundTint="#4D0B7A"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/btnMedia"
+        android:layout_marginTop="100dp"
+        android:layout_alignStart="@id/btnMedia" />
+
+    <Button
+        android:id="@+id/btnPolitics"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Power &amp; Politics"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_regular"
+        android:backgroundTint="#4D0B7A"
+        android:textColor="#FFFFFF"
+        android:layout_below="@+id/btnRights"
+        android:layout_marginTop="110dp"
+        android:layout_alignStart="@id/btnMedia" />
+</RelativeLayout>

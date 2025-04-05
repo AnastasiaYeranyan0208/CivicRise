@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "949502082965",
+    "project_id": "civicrise-faa54",
+    "storage_bucket": "civicrise-faa54.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949502082965:android:5679b6b4a91c2ae03d809c",
+        "android_client_info": {
+          "package_name": "com.ayeranyan.civicrise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJnb3GAB8HBjOlE0L9vr5Ot5nMam-EIdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
