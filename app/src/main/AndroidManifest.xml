@@ -21,6 +21,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainMenuActivity" />
+
+        <activity android:name=".QuizCategoriesActivity" />
+        <activity android:name=".QuizListActivity" />
+        <activity android:name=".QuizActivity" />
+
+
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 
