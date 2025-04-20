@@ -1,4 +1,4 @@
 package com.ayeranyan.civicrise;
 
-public class QuizResultActivity {
+public class QuizResultActivity extends android.app.Activity{
 }
