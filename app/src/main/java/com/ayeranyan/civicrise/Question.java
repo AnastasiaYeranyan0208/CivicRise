@@ -1,7 +1,6 @@
 package com.ayeranyan.civicrise;
 
 public class Question {
-
     private String questionText;
     private String option1;
     private String option2;
@@ -9,7 +8,12 @@ public class Question {
     private String option4;
     private int correctIndex;
 
-    public Question(String questionText, String option1, String option2, String option3, String option4, int correctIndex) {
+    public Question() {
+
+    }
+
+    public Question(String questionText, String option1, String option2,
+                    String option3, String option4, int correctIndex) {
         this.questionText = questionText;
         this.option1 = option1;
         this.option2 = option2;
@@ -18,27 +22,10 @@ public class Question {
         this.correctIndex = correctIndex;
     }
 
-    public String getQuestionText() {
-        return questionText;
-    }
-
-    public String getOption1() {
-        return option1;
-    }
-
-    public String getOption2() {
-        return option2;
-    }
-
-    public String getOption3() {
-        return option3;
-    }
-
-    public String getOption4() {
-        return option4;
-    }
-
-    public int getCorrectIndex() {
-        return correctIndex;
-    }
+    public String getQuestionText() { return questionText; }
+    public String getOption1() { return option1; }
+    public String getOption2() { return option2; }
+    public String getOption3() { return option3; }
+    public String getOption4() { return option4; }
+    public int getCorrectIndex() { return correctIndex; }
 }

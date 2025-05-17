@@ -25,6 +25,7 @@
             android:fontFamily="@font/roboto_bold"
             android:backgroundTint="#1E90FF"
             android:textColor="#FFFFFF"
+            android:layout_marginTop="75dp"
             android:layout_marginBottom="70dp" />
 
         <Button
@@ -36,5 +37,18 @@
             android:fontFamily="@font/roboto_bold"
             android:backgroundTint="#1E90FF"
             android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnQuizResults"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:text="Quiz Results"
+            android:textSize="30sp"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="70dp"
+            android:fontFamily="@font/roboto_bold"
+            android:backgroundTint="#1E90FF"
+            android:textColor="#FFFFFF" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

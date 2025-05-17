@@ -21,15 +21,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainMenuActivity" />
-
-        <activity android:name=".QuizCategoriesActivity" />
+        <activity android:name=".MainMenu2Activity" />
         <activity android:name=".QuizListActivity" />
+        <activity android:name=".QuizCategoriesActivity" />
         <activity android:name=".QuizActivity" />
-
+        <activity android:name=".QuizResultActivity" />
 
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>

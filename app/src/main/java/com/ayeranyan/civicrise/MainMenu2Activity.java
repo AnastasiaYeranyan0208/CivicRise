@@ -6,9 +6,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainMenuActivity extends AppCompatActivity {
+public class MainMenu2Activity extends AppCompatActivity {
 
-    private Button btnQuizzes, btnArticles, btnQuizResults;
+    private Button btnQuizzes, btnArticles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
         btnQuizzes = findViewById(R.id.btnQuizzes);
         btnArticles = findViewById(R.id.btnArticles);
-        btnQuizResults = findViewById(R.id.btnQuizResults);
 
         btnQuizzes.setOnClickListener(v -> {
             Intent intent = new Intent(this, QuizCategoriesActivity.class);
@@ -29,8 +28,8 @@ public class MainMenuActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        btnQuizResults.setOnClickListener(v -> {
-            Intent intent = new Intent(this, QuizResultActivity.class);
+        btnArticles.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ArticleActivity.class);
             startActivity(intent);
         });
     }

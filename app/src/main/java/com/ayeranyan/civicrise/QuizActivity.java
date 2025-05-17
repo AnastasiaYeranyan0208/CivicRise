@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
@@ -19,10 +23,9 @@ public class QuizActivity extends AppCompatActivity {
     private RadioButton rb1, rb2, rb3, rb4;
     private Button btnNext;
 
-    private List<Question> questions;
+    private List<Question> questionList;
     private int currentIndex = 0;
     private int score = 0;
-
     private String category;
     private int quizIndex;
 
@@ -30,9 +33,6 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
-        category = getIntent().getStringExtra("category");
-        quizIndex = getIntent().getIntExtra("quizIndex", 0);
 
         tvQuestion = findViewById(R.id.tvQuestion);
         radioGroup = findViewById(R.id.radioGroup);
@@ -42,45 +42,96 @@ public class QuizActivity extends AppCompatActivity {
         rb4 = findViewById(R.id.rb4);
         btnNext = findViewById(R.id.btnNext);
 
-        questions = QuizData.getQuiz(category, quizIndex);
+        category = getIntent().getStringExtra("category");
+        quizIndex = getIntent().getIntExtra("quizIndex", 0);
 
-        loadQuestion();
+        questionList = new ArrayList<>();
+        loadQuestionsFromFirestore();
 
         btnNext.setOnClickListener(v -> {
-            int selectedId = radioGroup.getCheckedRadioButtonId();
-            if (selectedId == -1) {
+            if (!rb1.isChecked() && !rb2.isChecked() && !rb3.isChecked() && !rb4.isChecked()) {
                 Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            int selectedIndex = radioGroup.indexOfChild(findViewById(selectedId));
-            if (selectedIndex == questions.get(currentIndex).getCorrectIndex()) {
+            int selectedIndex = radioGroup.indexOfChild(findViewById(radioGroup.getCheckedRadioButtonId()));
+            int correctIndex = questionList.get(currentIndex).getCorrectIndex();
+
+            RadioButton selectedButton = (RadioButton) radioGroup.getChildAt(selectedIndex);
+            RadioButton correctButton = (RadioButton) radioGroup.getChildAt(correctIndex);
+
+            if (selectedIndex == correctIndex) {
+                selectedButton.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
                 score++;
-            }
-
-            currentIndex++;
-
-            if (currentIndex < questions.size()) {
-                loadQuestion();
             } else {
-                Intent intent = new Intent(this, QuizResultActivity.class);
-                intent.putExtra("score", score);
-                intent.putExtra("total", questions.size());
-                intent.putExtra("category", category);
-                intent.putExtra("quizIndex", quizIndex);
-                startActivity(intent);
-                finish();
+                selectedButton.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                correctButton.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
             }
+
+            for (int i = 0; i < radioGroup.getChildCount(); i++) {
+                radioGroup.getChildAt(i).setEnabled(false);
+            }
+
+            btnNext.setEnabled(false);
+            btnNext.postDelayed(() -> {
+                currentIndex++;
+                if (currentIndex < questionList.size()) {
+                    showQuestion(currentIndex);
+                    btnNext.setEnabled(true);
+                } else {
+                    Intent intent = new Intent(QuizActivity.this, QuizResultActivity.class);
+                    intent.putExtra("score", score);
+                    intent.putExtra("total", questionList.size());
+                    intent.putExtra("category", category);
+                    intent.putExtra("quizIndex", quizIndex);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 1000);
         });
     }
 
-    private void loadQuestion() {
-        radioGroup.clearCheck();
-        Question q = questions.get(currentIndex);
+    private void loadQuestionsFromFirestore() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String quizId = category + "_" + quizIndex;
+
+        db.collection("quizzes")
+                .document(quizId)
+                .collection("questions")
+                .get()
+                .addOnSuccessListener(query -> {
+                    for (QueryDocumentSnapshot doc : query) {
+                        Question q = doc.toObject(Question.class);
+                        questionList.add(q);
+                    }
+                    if (questionList.isEmpty()) {
+                        Toast.makeText(this, "No questions found", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        showQuestion(currentIndex);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Failed to load quiz", Toast.LENGTH_SHORT).show();
+                    finish();
+                });
+    }
+
+    private void showQuestion(int index) {
+        Question q = questionList.get(index);
         tvQuestion.setText(q.getQuestionText());
+
         rb1.setText(q.getOption1());
         rb2.setText(q.getOption2());
         rb3.setText(q.getOption3());
         rb4.setText(q.getOption4());
+
+        radioGroup.clearCheck();
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            RadioButton rb = (RadioButton) radioGroup.getChildAt(i);
+            rb.setEnabled(true);
+            rb.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        }
     }
 }
+

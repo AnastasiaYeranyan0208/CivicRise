@@ -1,4 +1,4 @@
 package com.ayeranyan.civicrise;
 
-public class ArticleListActivity {
+public class ArticleActivity {
 }
