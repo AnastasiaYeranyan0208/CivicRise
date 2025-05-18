@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = etPassword.getText().toString();
 
         if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Enter all fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -63,6 +63,11 @@ public class LoginActivity extends AppCompatActivity {
                     if (!querySnapshot.isEmpty()) {
                         String email = querySnapshot.getDocuments().get(0).getString("email");
 
+                        if (email == null || email.isEmpty()) {
+                            Toast.makeText(this, "No email associated with this username", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                         auth.signInWithEmailAndPassword(email, password)
                                 .addOnSuccessListener(authResult -> {
                                     FirebaseUser user = auth.getCurrentUser();
@@ -72,17 +77,18 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                         startMain();
                                     } else {
-                                        Toast.makeText(this, "Please verify your email first", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(this, "Please verify your email before logging in", Toast.LENGTH_LONG).show();
                                     }
                                 })
                                 .addOnFailureListener(e ->
                                         Toast.makeText(this, "Login failed: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+
                     } else {
-                        Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "No such user found", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(e ->
-                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                        Toast.makeText(this, "Database error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void startMain() {
@@ -90,3 +96,4 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 }
+

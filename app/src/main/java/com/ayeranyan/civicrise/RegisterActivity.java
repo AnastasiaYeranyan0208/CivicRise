@@ -75,6 +75,19 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
+        db.collection("users")
+                .whereEqualTo("username", username)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        etUsername.setError("Username already exists");
+                    } else {
+                        createFirebaseUser(email, phone, username, password);
+                    }
+                });
+    }
+
+    private void createFirebaseUser(String email, String phone, String username, String password) {
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     FirebaseUser user = authResult.getUser();
