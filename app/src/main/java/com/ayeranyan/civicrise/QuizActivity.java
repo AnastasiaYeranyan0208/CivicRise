@@ -28,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     private int score = 0;
     private String category;
     private int quizIndex;
+    private boolean answerChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,35 +50,39 @@ public class QuizActivity extends AppCompatActivity {
         loadQuestionsFromFirestore();
 
         btnNext.setOnClickListener(v -> {
-            if (!rb1.isChecked() && !rb2.isChecked() && !rb3.isChecked() && !rb4.isChecked()) {
-                Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show();
-                return;
-            }
+            if (!answerChecked) {
+                if (radioGroup.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(this, "Please select an answer", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-            int selectedIndex = radioGroup.indexOfChild(findViewById(radioGroup.getCheckedRadioButtonId()));
-            int correctIndex = questionList.get(currentIndex).getCorrectIndex();
+                int selectedIndex = radioGroup.indexOfChild(findViewById(radioGroup.getCheckedRadioButtonId()));
+                int correctIndex = questionList.get(currentIndex).getCorrectIndex();
 
-            RadioButton selectedButton = (RadioButton) radioGroup.getChildAt(selectedIndex);
-            RadioButton correctButton = (RadioButton) radioGroup.getChildAt(correctIndex);
+                RadioButton selectedButton = (RadioButton) radioGroup.getChildAt(selectedIndex);
+                RadioButton correctButton = (RadioButton) radioGroup.getChildAt(correctIndex);
 
-            if (selectedIndex == correctIndex) {
-                selectedButton.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-                score++;
+                if (selectedIndex == correctIndex) {
+                    selectedButton.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                    score++;
+                } else {
+                    selectedButton.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+                    correctButton.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+                }
+
+                for (int i = 0; i < radioGroup.getChildCount(); i++) {
+                    radioGroup.getChildAt(i).setEnabled(false);
+                }
+
+                btnNext.setText("Next");
+                answerChecked = true;
+
             } else {
-                selectedButton.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
-                correctButton.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-            }
-
-            for (int i = 0; i < radioGroup.getChildCount(); i++) {
-                radioGroup.getChildAt(i).setEnabled(false);
-            }
-
-            btnNext.setEnabled(false);
-            btnNext.postDelayed(() -> {
                 currentIndex++;
                 if (currentIndex < questionList.size()) {
                     showQuestion(currentIndex);
-                    btnNext.setEnabled(true);
+                    btnNext.setText("Check");
+                    answerChecked = false;
                 } else {
                     Intent intent = new Intent(QuizActivity.this, QuizResultActivity.class);
                     intent.putExtra("score", score);
@@ -87,7 +92,7 @@ public class QuizActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-            }, 1000);
+            }
         });
     }
 
@@ -134,4 +139,3 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 }
-
