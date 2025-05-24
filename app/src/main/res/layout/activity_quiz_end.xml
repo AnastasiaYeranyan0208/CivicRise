@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_photo"
+    android:padding="32dp">
+
+    <TextView
+        android:id="@+id/tvCongratulations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Congratulations!"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:padding="16dp" />
+
+    <Button
+        android:id="@+id/btnBackToMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Main Menu"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/roboto_bold"
+        android:backgroundTint="#4D0B7A"
+        android:textSize="16sp"
+        android:layout_below="@id/tvCongratulations"
+        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

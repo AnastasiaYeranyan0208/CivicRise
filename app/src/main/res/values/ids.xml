@@ -4,4 +4,6 @@
     <item name="btnMedia" type="id" />
     <item name="btnRights" type="id" />
     <item name="btnPolitics" type="id" />
+    <item name="factLink" type="id" />
+    <item name="factText" type="id" />
 </resources>

@@ -1,3 +1,4 @@
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,6 +13,17 @@
         android:layout_marginTop="72dp"
         android:layout_marginBottom="48dp"
         android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Question 1/15"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:layout_marginBottom="12dp" />
 
         <TextView
             android:id="@+id/tvQuestion"
@@ -77,4 +89,3 @@
             android:layout_marginTop="16dp" />
     </LinearLayout>
 </ScrollView>
-

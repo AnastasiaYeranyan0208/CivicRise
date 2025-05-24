@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,LoginActivity.class)));
 
         btnRegister.setOnClickListener (v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
-        btnTestMode.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,MainMenu2Activity.class)));
+        btnTestMode.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, TestUserActivity.class)));
 
     }
 }

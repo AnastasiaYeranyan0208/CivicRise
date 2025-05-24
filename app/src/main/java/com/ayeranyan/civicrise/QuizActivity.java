@@ -19,10 +19,10 @@ import java.util.List;
 public class QuizActivity extends AppCompatActivity {
 
     private TextView tvQuestion;
+    private TextView tvProgress;
     private RadioGroup radioGroup;
     private RadioButton rb1, rb2, rb3, rb4;
     private Button btnNext;
-
     private List<Question> questionList;
     private int currentIndex = 0;
     private int score = 0;
@@ -36,6 +36,7 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         tvQuestion = findViewById(R.id.tvQuestion);
+        tvProgress = findViewById(R.id.tvProgress);
         radioGroup = findViewById(R.id.radioGroup);
         rb1 = findViewById(R.id.rb1);
         rb2 = findViewById(R.id.rb2);
@@ -45,8 +46,8 @@ public class QuizActivity extends AppCompatActivity {
 
         category = getIntent().getStringExtra("category");
         quizIndex = getIntent().getIntExtra("quizIndex", 0);
-
         questionList = new ArrayList<>();
+
         loadQuestionsFromFirestore();
 
         btnNext.setOnClickListener(v -> {
@@ -84,11 +85,9 @@ public class QuizActivity extends AppCompatActivity {
                     btnNext.setText("Check");
                     answerChecked = false;
                 } else {
-                    Intent intent = new Intent(QuizActivity.this, QuizResultActivity.class);
+                    Intent intent = new Intent(QuizActivity.this, QuizEndActivity.class);
                     intent.putExtra("score", score);
                     intent.putExtra("total", questionList.size());
-                    intent.putExtra("category", category);
-                    intent.putExtra("quizIndex", quizIndex);
                     startActivity(intent);
                     finish();
                 }
@@ -125,13 +124,13 @@ public class QuizActivity extends AppCompatActivity {
     private void showQuestion(int index) {
         Question q = questionList.get(index);
         tvQuestion.setText(q.getQuestionText());
-
+        tvProgress.setText("Question " + (index + 1) + "/" + questionList.size());
         rb1.setText(q.getOption1());
         rb2.setText(q.getOption2());
         rb3.setText(q.getOption3());
         rb4.setText(q.getOption4());
-
         radioGroup.clearCheck();
+
         for (int i = 0; i < radioGroup.getChildCount(); i++) {
             RadioButton rb = (RadioButton) radioGroup.getChildAt(i);
             rb.setEnabled(true);

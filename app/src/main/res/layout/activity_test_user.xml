@@ -1,0 +1,67 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_photo"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp"
+        android:layout_marginTop="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="36sp"
+            android:fontFamily="@font/dosis_bold"
+            android:layout_marginTop="80dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test User"
+            android:enabled="false"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_regular"
+            android:backgroundTint="#CCCCCC"
+            android:layout_marginBottom="16dp" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Samsung2025"
+            android:enabled="false"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_regular"
+            android:backgroundTint="#CCCCCC"
+            android:inputType="textPassword"
+            android:layout_marginBottom="8dp" />
+
+        <CheckBox
+            android:id="@+id/chkRemember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/roboto_bold"
+            android:backgroundTint="#4D0B7A"
+            android:textSize="18sp"
+            android:minHeight="48dp" />
+    </LinearLayout>
+</ScrollView>

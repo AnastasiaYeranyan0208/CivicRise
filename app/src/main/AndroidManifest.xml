@@ -24,11 +24,13 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".MainMenu2Activity" />
+        <activity android:name=".TestUserActivity" />
         <activity android:name=".QuizListActivity" />
         <activity android:name=".QuizCategoriesActivity" />
         <activity android:name=".QuizActivity" />
-        <activity android:name=".QuizResultActivity" />
+        <activity android:name=".QuizEndActivity" />
+        <activity android:name=".FactsActivity" />
+
 
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>

@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    private Button btnQuizzes, btnArticles, btnQuizResults;
+    private Button btnQuizzes, btnFacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,22 +16,19 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         btnQuizzes = findViewById(R.id.btnQuizzes);
-        btnArticles = findViewById(R.id.btnArticles);
-        btnQuizResults = findViewById(R.id.btnQuizResults);
+        btnFacts = findViewById(R.id.btnFacts);
+
 
         btnQuizzes.setOnClickListener(v -> {
             Intent intent = new Intent(this, QuizCategoriesActivity.class);
             startActivity(intent);
         });
 
-        btnArticles.setOnClickListener(v -> {
-            Intent intent = new Intent(this, ArticleActivity.class);
+        btnFacts.setOnClickListener(v -> {
+            Intent intent = new Intent(this, FactsActivity.class);
             startActivity(intent);
         });
 
-        btnQuizResults.setOnClickListener(v -> {
-            Intent intent = new Intent(this, QuizResultActivity.class);
-            startActivity(intent);
-        });
+
     }
 }

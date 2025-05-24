@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CivicRise</string>
+    <string name="fact1_text">Did you know… false news spreads six times faster on Twitter than true stories?</string>
+    <string name="fact1_link">Science Magazine</string>
+    <string name="fact2_text">Did you know… AI was used in political campaigns during the 2024 elections?</string>
+    <string name="fact2_link">Emory University</string>
+    <string name="fact3_text">Did you know… visual misinformation is widespread on Facebook and often undercounted by researchers?</string>
+    <string name="fact3_link">Texas A&amp;M University</string>
+    <string name="fact4_text">Did you know… social media algorithms can amplify political polarization?</string>
+    <string name="fact4_link">Brookings Institution</string>
 </resources>
